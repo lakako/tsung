@@ -762,12 +762,12 @@ urandomstr(Size) when is_integer(Size), Size >= 0 ->
 %% @end
 %%----------------------------------------------------------------------
 randomstr(Size) when is_integer(Size), Size >= 0 ->
-     lists:map(fun (_) -> random:uniform(25) + $a  end, lists:seq(1,Size)).
+     lists:map(fun (_) -> rand:uniform(25) + $a  end, lists:seq(1,Size)).
 
 random_alphanumstr(Size) when is_integer(Size), Size >= 0 ->
     AllowedChars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
     S = length(AllowedChars),
-    lists:map(fun (_) -> lists:nth(random:uniform(S), AllowedChars) end, lists:seq(1,Size)).
+    lists:map(fun (_) -> lists:nth(rand:uniform(S), AllowedChars) end, lists:seq(1,Size)).
 
 %%----------------------------------------------------------------------
 %% @spec randombinstr(Size::integer()) ->binary()
@@ -779,7 +779,7 @@ randombinstr(Size) when is_integer(Size), Size > 0 ->
     randombinstr(Size,<<>>).
 randombinstr(0,Bin) -> Bin;
 randombinstr(Size,Bin) ->
-    C=random:uniform(25)+$a,
+    C=rand:uniform(25)+$a,
     randombinstr(Size-1, << Bin/binary, C >>).
 
 

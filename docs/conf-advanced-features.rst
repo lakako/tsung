@@ -42,7 +42,7 @@ Here is the Erlang code of the module used for dynamic substitution:
  -export([new/1]).
 
  new({Pid, DynData}) ->
-    case random:uniform(3) of
+    case rand:uniform(3) of
         1 -> "IBM";
         2 -> "MSFT";
         3 -> "RHAT"
