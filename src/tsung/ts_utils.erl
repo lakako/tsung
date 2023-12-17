@@ -435,7 +435,7 @@ stop_all([Host],Name,MsgName,Fun) when is_atom(Host) ->
         Pid ->
             Controller_Node = node(Pid),
             Fun(Controller_Node),
-            slave:stop(Controller_Node)
+            peer:stop(Controller_Node)
     end;
 stop_all(_,_,_,_)->
     erlang:display("Bad Hostname").

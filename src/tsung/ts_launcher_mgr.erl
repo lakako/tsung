@@ -148,7 +148,7 @@ handle_info(_Info, State) ->
 terminate(_Reason, _State) ->
     case ts_utils:is_controller() of
         false ->
-            slave:stop(node()); %% commit suicide.
+            peer:stop(node()); %% commit suicide.
         true ->
             ok
     end.

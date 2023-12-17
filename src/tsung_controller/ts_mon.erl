@@ -397,7 +397,7 @@ terminate(Reason, #state{wait_gui=true}) ->
 terminate(Reason, State) ->
     ?LOGF("stopping monitor (~p)~n",[Reason],?NOTICE),
     close_stats(State),
-    slave:stop(node()).
+    peer:stop(node()).
 
 %%--------------------------------------------------------------------
 %% Func: code_change/3

@@ -325,4 +325,4 @@ start_beam(Host) ->
     Args = ts_utils:erl_system_args(),
     ?LOGF("Starting os_mon beam on host ~p ~n", [Host], ?NOTICE),
     ?LOGF("~p Args: ~p~n", [Host, Args], ?DEB),
-    slave:start(list_to_atom(Host), ?NODE, Args).
+    peer:start(list_to_atom(Host), ?NODE, Args).

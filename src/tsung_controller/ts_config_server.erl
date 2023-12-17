@@ -495,7 +495,7 @@ handle_cast({newbeam, Host, Arrivals}, State=#state{last_beam_id = NodeId, confi
     case rpc:call(Node,tsung,start,[],?RPC_TIMEOUT) of
         {badrpc, Reason} ->
             ?LOGF("Fail to start tsung on beam ~p, reason: ~p",[Node,Reason], ?ERR),
-            slave:stop(Node),
+            peer:stop(Node),
             {noreply, State};
         _ ->
             ts_launcher_static:stop(Node), % no need for static launcher in this case (already have one)
@@ -834,7 +834,7 @@ expand_static([{Delay, Name} | Static],SessionsNames, Acc) ->
 %% @doc start a remote beam
 %%
 start_slave(Host, Name, Args) when is_atom(Host), is_atom(Name)->
-    case slave:start(Host, Name, Args) of
+    case peer:start(#{name => Name, host => Host}) of
         {ok, Node} ->
             ?LOGF("Remote beam started on node ~p ~n", [Node], ?NOTICE),
             Res = net_adm:ping(Node),

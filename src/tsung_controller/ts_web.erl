@@ -144,7 +144,7 @@ stop(SessionID, _Env, _Input) ->
                                 ++ "<h1 class=\"page-header\">Tsung controller  is stopping now !</h1>"
 
                                ]),
-    slave:stop(node()).
+    peer:stop(node()).
 
 status(SessionID, _Env, _Input) ->
     Title ="Tsung Status",
