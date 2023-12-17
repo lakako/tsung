@@ -65,8 +65,7 @@ random() ->
 %% Seeds random number generation with erlang:now() and generates a random UUID
 %%
 srandom() ->
-    Seed = erlang:system_time(),
-    rand:seed(Seed),
+    rand:seed(default),
     random().
 
 %% @spec sha(Namespace, Name) -> uuid()
