@@ -23,8 +23,8 @@
 -author('nniclaus@sophia.inria.fr').
 
 -ifndef(new_time_api).
--define(NOW, erlang:now()).
--define(TIMESTAMP, erlang:now()).
+-define(NOW, erlang:timestamp()).
+-define(TIMESTAMP, erlang:timestamp()).
 -else.
 -define(NOW, erlang:monotonic_time()).
 -define(TIMESTAMP, erlang:timestamp()).
